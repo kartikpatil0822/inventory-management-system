@@ -14,6 +14,18 @@ setup_logging()
 
 @router.post('/items/')
 async def create_item(request: Request, db: Session = Depends(get_db)):
+    """Creates new item API
+
+    :arg:
+        request: Request Object of fastapi
+        db: Database session
+
+    :returns:
+        Response 201 Created with item details
+
+    :raises:
+        Response 400 Bad Request if item already exists
+    """
     logging.info(f"Request method: ['{request.method}'], url: {request.url}, headers: {request.headers}, "
                  f"body: {request.body}")
     try:
@@ -51,6 +63,20 @@ async def create_item(request: Request, db: Session = Depends(get_db)):
 @router.get('/items/{item_id}')
 async def get_item(item_id: str, request: Request, db: Session = Depends(get_db),
                    redis_instance: any = Depends(get_redis_pool)):
+    """Fetches item details by item ID
+
+    :arg:
+        item_id: ID of the item to fetch
+        request: Request Object of fastapi
+        db: Database session
+        redis_instance: Redis instance for caching
+
+    :returns:
+        Response 200 OK with item details
+
+    :raises:
+        Response 404 Not Found if item not found
+    """
     logging.info(f"Request: method: ['{request.method}'], url: {request.url}, headers: {request.headers}, "
                  f"body: {request.body}")
     json_data = None
@@ -92,6 +118,20 @@ async def get_item(item_id: str, request: Request, db: Session = Depends(get_db)
 @router.put('/items/{item_id}')
 async def update_item(item_id: str, request: Request, db: Session = Depends(get_db),
                       redis_instance: any = Depends(get_redis_pool)):
+    """Updates item details by item ID
+
+    :arg:
+        item_id: ID of the item to update
+        request: Request Object of fastapi
+        db: Database session
+        redis_instance: Redis instance for caching
+
+    :returns:
+        Response 200 OK with updated item details
+
+    :raises:
+        Response 404 Not Found if item not found
+    """
     logging.info(
         f"Request method: ['{request.method}'], url: {request.url}, headers: {request.headers}, body: {request.body}")
     try:
@@ -134,6 +174,21 @@ async def update_item(item_id: str, request: Request, db: Session = Depends(get_
 @router.delete('/items/{item_id}')
 async def delete_item(item_id: str, request: Request, db: Session = Depends(get_db),
                       redis_instance: any = Depends(get_redis_pool)):
+    """Deletes item by item ID
+
+    :arg:
+        item_id: ID of the item to delete
+        request: Request Object of fastapi
+        db: Database session
+        redis_instance: Redis instance for caching
+
+    :returns:
+        Response 200 OK with success message
+
+    :raises:
+        Response 404 Not Found if item not found
+    """
+
     logging.info(
         f"Request method: ['{request.method}'], url: {request.url}, headers: {request.headers}, body: {request.body}")
     try:

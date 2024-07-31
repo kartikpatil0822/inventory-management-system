@@ -14,6 +14,12 @@ Session = sessionmaker(bind=engine, autoflush=False, autocommit=False)
 
 
 def get_db() -> Generator:
+    """
+    Provides a database session generator.
+
+    Yields:
+        db: SQLAlchemy Session instance.
+    """
     try:
         db = Session()
         yield db
@@ -22,5 +28,11 @@ def get_db() -> Generator:
 
 
 async def get_redis_pool():
+    """
+    Provides a Redis connection pool.
+
+    Returns:
+        redis_instance: Redis connection instance.
+    """
     redis_instance = redis.Redis.from_url(url=settings.REDIS_URL)
     return redis_instance
