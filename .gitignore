@@ -1,0 +1,52 @@
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# Node.js
+node_modules/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+env/
+venv/
+
+# Django
+*.log
+*.pot
+*.pyc
+__pycache__/
+db.sqlite3
+/static/
+*.sqlite3
+
+# JetBrains IDEs (like PyCharm)
+.idea/
+
+# VSCode
+.vscode/
+
+# MacOS
+*.DS_Store
+
+# Windows
+*.exe
+*.dll
+*.log
+
+# Logs
+*.log
+
+# Compiled source
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Dependency directories
+node_modules/
+bower_components/
