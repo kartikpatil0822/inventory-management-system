@@ -48,11 +48,9 @@ POSTGRES_SERVER=postgres
 POSTGRES_PORT=5432
 POSTGRES_DB=mydatabase
 REDIS_URL=redis://localhost:6379/0
-Setup Environment Variables
-Create a .env file and add the following variables:
 ```
 
-### Setup Environment Variables
+### Setup Docker File
 
 Update the `DockerCompose\docker-compose.yml` file if necessary and start the services:
 
